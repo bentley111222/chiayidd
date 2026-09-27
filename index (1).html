@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+
+  <title>嘉義叫車｜24小時預約接送｜高鐵・機場・長途｜DD嘉義叫車</title>
+  <meta name="description" content="DD嘉義叫車提供嘉義市、嘉義縣預約接送服務，高鐵嘉義站、機場接送、醫院接送、跨縣市長途與包車旅遊皆可透過LINE官方帳號預約。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://hxtaxifleet.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DD嘉義叫車｜嘉義24小時預約接送">
+  <meta property="og:description" content="嘉義市・嘉義縣・高鐵・機場・長途，透過LINE官方帳號預約。">
+  <meta property="og:url" content="https://hxtaxifleet.com/">
+
+  <style>
+    :root {
+      --black: #111111;
+      --dark: #1d1d1d;
+      --green: #06c755;
+      --green-dark: #049d43;
+      --cream: #f7f5ef;
+      --light: #f4f4f4;
+      --white: #ffffff;
+      --text: #222222;
+      --muted: #707070;
+      --border: #e9e9e9;
+      --shadow: 0 12px 40px rgba(0,0,0,.08);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC",
+        "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: var(--black);
+      color: #fff;
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 14px;
+      letter-spacing: .04em;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      width: min(var(--max), calc(100% - 36px));
+      min-height: 72px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+
+    .brand b {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .nav-links a:not(.nav-cta):hover {
+      color: var(--green-dark);
+    }
+
+    .nav-cta,
+    .line-btn {
+      background: var(--green);
+      color: #fff;
+      font-weight: 800;
+      border-radius: 10px;
+      transition: .2s ease;
+    }
+
+    .nav-cta {
+      padding: 10px 17px;
+    }
+
+    .nav-cta:hover,
+    .line-btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.48)),
+        url("https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(6,199,85,.13);
+      right: -130px;
+      bottom: -180px;
+    }
+
+    .hero-inner {
+      width: min(var(--max), calc(100% - 36px));
+      min-height: 680px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      padding: 90px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(6,199,85,.14);
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.16;
+      letter-spacing: -.055em;
+      margin: 0 0 22px;
+    }
+
+    .hero-copy > p {
+      font-size: clamp(17px, 2vw, 20px);
+      color: rgba(255,255,255,.88);
+      max-width: 700px;
+      margin: 0 0 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 35px;
+    }
+
+    .line-btn,
+    .ghost-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 52px;
+      padding: 0 23px;
+      border-radius: 11px;
+    }
+
+    .line-btn {
+      box-shadow: 0 10px 25px rgba(6,199,85,.22);
+    }
+
+    .ghost-btn {
+      border: 1px solid rgba(255,255,255,.35);
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      font-weight: 800;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      color: rgba(255,255,255,.85);
+      font-size: 14px;
+    }
+
+    .hero-points span::before {
+      content: "✓";
+      color: var(--green);
+      font-weight: 900;
+      margin-right: 6px;
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 36px));
+      margin: auto;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 45px);
+      line-height: 1.3;
+      letter-spacing: -.04em;
+      margin: 0 0 12px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .services {
+      background: var(--cream);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.05);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: .2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #edf9f1;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .process {
+      background: #fff;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      position: relative;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--black);
+      color: #fff;
+      font-weight: 900;
+      margin-bottom: 17px;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .highlight {
+      background: var(--black);
+      color: #fff;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .highlight h2 {
+      max-width: 600px;
+    }
+
+    .highlight p {
+      color: rgba(255,255,255,.7);
+      max-width: 650px;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 13px;
+      margin-top: 25px;
+    }
+
+    .check-list div {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+    }
+
+    .check-list i {
+      font-style: normal;
+      color: var(--green);
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .route-box {
+      padding: 32px;
+      border-radius: 22px;
+      background: #1d1d1d;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .route-box h3 {
+      margin: 0 0 17px;
+      font-size: 22px;
+    }
+
+    .route-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .route-tags span {
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: rgba(255,255,255,.86);
+    }
+
+    .area {
+      background: #f8f8f8;
+    }
+
+    .area-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 20px;
+    }
+
+    .area-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+    }
+
+    .area-card h3 {
+      margin-top: 0;
+      font-size: 21px;
+    }
+
+    .area-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .area-list span {
+      padding: 7px 11px;
+      border-radius: 8px;
+      background: #f2f2f2;
+      font-size: 14px;
+    }
+
+    .faq {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 4px;
+    }
+
+    details:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 800;
+      font-size: 17px;
+      padding-right: 30px;
+      position: relative;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 4px;
+      top: 0;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      color: var(--muted);
+      margin: 12px 0 0;
+      padding-right: 35px;
+    }
+
+    .cta {
+      background:
+        radial-gradient(circle at 85% 30%, rgba(6,199,85,.2), transparent 30%),
+        var(--black);
+      color: #fff;
+      text-align: center;
+    }
+
+    .cta h2 {
+      max-width: 700px;
+      margin: 0 auto 13px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,.7);
+      margin: 0 auto 28px;
+    }
+
+    footer {
+      background: #0b0b0b;
+      color: rgba(255,255,255,.58);
+      padding: 45px 0 80px;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 36px));
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand b {
+      color: var(--green);
+    }
+
+    .footer-link {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .floating-line {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1100;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+    }
+
+    .floating-line:hover {
+      background: var(--green-dark);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .highlight-grid,
+      .area-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar {
+        font-size: 12px;
+      }
+
+      nav {
+        min-height: 62px;
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      .nav-cta {
+        font-size: 13px;
+        padding: 8px 12px;
+      }
+
+      .hero-inner {
+        min-height: 650px;
+        padding: 70px 0;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .line-btn,
+      .ghost-btn {
+        width: 100%;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .service-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card,
+      .step,
+      .area-card {
+        padding: 24px;
+      }
+
+      .floating-line {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        justify-content: center;
+      }
+
+      footer {
+        padding-bottom: 100px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "DD嘉義叫車",
+    "description": "嘉義市、嘉義縣預約接送、高鐵接送、機場接送、跨縣市長途與包車服務。",
+    "areaServed": [
+      "嘉義市",
+      "嘉義縣"
+    ],
+    "url": "https://hxtaxifleet.com/",
+    "sameAs": [
+      "https://lin.ee/ZZbzCdm"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <div class="topbar">
+    DD嘉義叫車｜嘉義市・嘉義縣預約接送服務
+  </div>
+
+  <div class="nav-wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="DD嘉義叫車首頁">
+        DD<b>嘉義叫車</b>
+      </a>
+
+      <div class="nav-links">
+        <a href="#services">服務項目</a>
+        <a href="#areas">服務區域</a>
+        <a href="#faq">常見問題</a>
+        <a class="nav-cta" href="https://lin.ee/ZZbzCdm" target="_blank" rel="noopener noreferrer">
+          LINE 立即叫車
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+
+          <div class="eyebrow">嘉義地區預約接送</div>
+
+          <h1>
+            嘉義叫車<br>
+            安心抵達每一站
+          </h1>
+
+          <p>
+            DD嘉義叫車提供嘉義市、嘉義縣及跨縣市預約接送服務。
+            高鐵、機場與跨縣市長途行程，都可以提前透過LINE詢問。
+          </p>
+
+          <div class="hero-actions">
+            <a class="line-btn" href="https://lin.ee/ZZbzCdm" target="_blank" rel="noopener noreferrer">
+              💬 LINE 官方立即預約
+            </a>
+            <a class="ghost-btn" href="#services">
+              查看接送服務
+            </a>
+          </div>
+
+          <div class="hero-points">
+            <span>提前預約</span>
+            <span>嘉義市／嘉義縣</span>
+            <span>高鐵／機場／長途</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+
+        <div class="section-head">
+          <div class="section-label">OUR SERVICES</div>
+          <h2>你要去哪裡，我們協助安排</h2>
+          <p>提供多種預約接送需求，出發前把時間與地點確認清楚，行程更好安排。</p>
+        </div>
+
+        <div class="service-grid">
+
+          <article class="service-card">
+            <div class="service-icon">🚗</div>
+            <h3>嘉義預約接送</h3>
+            <p>嘉義市、嘉義縣日常接送，可提前提供上下車地點與時間詢問安排。</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🚄</div>
+            <h3>高鐵嘉義站</h3>
+            <p>高鐵嘉義站往返嘉義市區、嘉義縣各地，以及其他縣市的接送需求。</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">✈️</div>
+            <h3>機場接送</h3>
+            <p>桃園、台中、嘉義、高雄等機場接送，可提前提供航班與行程資訊詢問。</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🛣️</div>
+            <h3>跨縣市長途</h3>
+            <p>嘉義往返台南、雲林、台中、高雄等地，長途行程可提前透過LINE詢問。</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+
+        <div class="section-head">
+          <div class="section-label">HOW TO BOOK</div>
+          <h2>三個步驟，完成預約</h2>
+          <p>不用複雜操作，直接透過LINE提供行程資訊即可。</p>
+        </div>
+
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>加入LINE</h3>
+            <p>點擊官方LINE連結，直接與DD嘉義叫車聯繫。</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>提供行程</h3>
+            <p>告知日期、時間、上車地點、目的地及乘車人數。</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>確認安排</h3>
+            <p>由客服協助確認車輛安排與行程相關資訊。</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="container">
+
+        <div class="highlight-grid">
+
+          <div>
+            <div class="section-label">CHIAYI TRANSFER</div>
+            <h2>高鐵抵達嘉義，接下來的路交給我們</h2>
+            <p>
+              如果你的行程需要從高鐵嘉義站前往市區、嘉義縣或其他縣市，
+              可以在出發前先提供抵達時間與目的地，透過LINE詢問接送安排。
+            </p>
+
+            <div class="check-list">
+              <div><i>✓</i><span>高鐵嘉義站 → 嘉義市區</span></div>
+              <div><i>✓</i><span>高鐵嘉義站 → 嘉義縣各地</span></div>
+              <div><i>✓</i><span>高鐵嘉義站 → 外縣市</span></div>
+              <div><i>✓</i><span>指定時間預約接送</span></div>
+            </div>
+          </div>
+
+          <div class="route-box">
+            <h3>常見接送方向</h3>
+            <div class="route-tags">
+              <span>嘉義市</span>
+              <span>太保</span>
+              <span>朴子</span>
+              <span>民雄</span>
+              <span>大林</span>
+              <span>阿里山</span>
+              <span>台南</span>
+              <span>雲林</span>
+              <span>台中</span>
+              <span>高雄</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="area" id="areas">
+      <div class="container">
+
+        <div class="section-head">
+          <div class="section-label">SERVICE AREAS</div>
+          <h2>嘉義地區預約接送</h2>
+          <p>以下為常見服務區域；若目的地不在列表內，也可以直接透過LINE詢問。</p>
+        </div>
+
+        <div class="area-grid">
+
+          <div class="area-card">
+            <h3>嘉義市</h3>
+            <div class="area-list">
+              <span>東區</span>
+              <span>西區</span>
+              <span>嘉義火車站</span>
+              <span>文化路</span>
+              <span>市區飯店</span>
+              <span>住宅區</span>
+            </div>
+          </div>
+
+          <div class="area-card">
+            <h3>嘉義縣</h3>
+            <div class="area-list">
+              <span>太保</span>
+              <span>朴子</span>
+              <span>民雄</span>
+              <span>大林</span>
+              <span>水上</span>
+              <span>中埔</span>
+              <span>番路</span>
+              <span>阿里山</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+
+        <div class="section-head">
+          <div class="section-label">FAQ</div>
+          <h2>常見問題</h2>
+          <p>預約前如果有疑問，可以先看看以下資訊。</p>
+        </div>
+
+        <div class="faq">
+
+          <details>
+            <summary>要怎麼預約DD嘉義叫車？</summary>
+            <p>點擊網站上的LINE官方按鈕，加入官方帳號後提供日期、時間、上車地點、目的地及乘車人數即可。</p>
+          </details>
+
+          <details>
+            <summary>可以提前多久預約？</summary>
+            <p>建議越早詢問越方便安排。高鐵、機場、清晨、深夜及跨縣市行程，建議提前預約。</p>
+          </details>
+
+          <details>
+            <summary>嘉義縣也可以預約嗎？</summary>
+            <p>可以。嘉義市與嘉義縣各地區皆可透過LINE詢問接送安排，實際是否能安排仍以預約確認為準。</p>
+          </details>
+
+          <details>
+            <summary>可以前往其他縣市嗎？</summary>
+            <p>可以詢問跨縣市長途接送，例如嘉義往返台南、雲林、台中、高雄等地。</p>
+          </details>
+
+          <details>
+            <summary>怎麼詢問價格？</summary>
+            <p>不同日期、時間、路程、乘車人數與服務內容可能影響費用，請透過LINE提供完整行程資訊，再確認實際報價。</p>
+          </details>
+
+          <details>
+            <summary>沒有列出的地點可以接送嗎？</summary>
+            <p>可以直接透過LINE詢問。提供完整的上車地點與目的地後，再確認是否能安排。</p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="section-label">DD CHIAYI TAXI</div>
+        <h2>準備好了，就從LINE開始預約</h2>
+        <p>嘉義市・嘉義縣・高鐵・機場・長途</p>
+
+        <a class="line-btn" href="https://lin.ee/ZZbzCdm" target="_blank" rel="noopener noreferrer">
+          💬 加入DD嘉義叫車 LINE官方帳號
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+
+      <div>
+        <div class="footer-brand">DD<b>嘉義叫車</b></div>
+        <div>嘉義市・嘉義縣預約接送服務</div>
+      </div>
+
+      <div>
+        LINE官方帳號：
+        <a class="footer-link" href="https://lin.ee/ZZbzCdm" target="_blank" rel="noopener noreferrer">
+          立即加入
+        </a>
+        <br>
+        © 2026 DD嘉義叫車
+      </div>
+
+    </div>
+  </footer>
+
+  <a
+    class="floating-line"
+    href="https://lin.ee/ZZbzCdm"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="加入DD嘉義叫車LINE官方帳號"
+  >
+    💬 LINE 立即叫車
+  </a>
+
+</body>
+</html>
